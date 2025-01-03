@@ -1,0 +1,29 @@
+﻿@model GestorUsuariosCRUD.Models.Role
+
+@{
+    ViewData["Title"] = "Detalles";
+}
+
+<h1>Detalles</h1>
+
+<div>
+    <h4>Rol</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NombreRol)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NombreRol)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.IdRol" class="btn btn-warning">
+        <i class="ri-pencil-line"></i> Editar
+    </a> |
+    <a asp-action="Index" class="btn btn-secondary">
+        <i class="ri-arrow-left-line"></i> Volver
+    </a>
+</div>

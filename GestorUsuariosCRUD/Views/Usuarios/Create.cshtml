@@ -1,0 +1,70 @@
+﻿@model GestorUsuariosCRUD.Models.Usuario
+
+@{
+    ViewData["Title"] = "Crear";
+}
+
+<h1 class="text-primary">
+    <i class="ri-user-add-line"></i> Crear Usuario
+</h1>
+
+<h4>Formulario de Usuario</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6 col-lg-4 mx-auto">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label">Nombre</label>
+                <input asp-for="Nombre" class="form-control" placeholder="Ingrese el nombre del usuario" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Correo" class="control-label">Correo Electrónico</label>
+                <input asp-for="Correo" class="form-control" placeholder="Ingrese el correo electrónico" />
+                <span asp-validation-for="Correo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Telefono" class="control-label">Teléfono</label>
+                <input asp-for="Telefono" class="form-control" placeholder="Ingrese el teléfono" />
+                <span asp-validation-for="Telefono" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Contrasena" class="control-label">Contraseña</label>
+                <input asp-for="Contrasena" type="password" class="form-control" placeholder="Ingrese la contraseña" />
+                <span asp-validation-for="Contrasena" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="selectedRoleId" class="control-label">Rol</label>
+                <select id="selectedRoleId" name="selectedRoleId" class="form-control">
+                    <option disabled selected>-- Seleccione un rol --</option>
+                    @foreach (var role in ViewBag.Roles as IEnumerable<SelectListItem>)
+                    {
+                        <option value="@role.Value">@role.Text</option>
+                    }
+                </select>
+            </div>
+            <hr />
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">
+                    <i class="ri-save-line"></i> Guardar
+                </button> |
+                <a asp-action="Index" class="btn btn-secondary">
+                    <i class="ri-arrow-left-line"></i> Volver
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

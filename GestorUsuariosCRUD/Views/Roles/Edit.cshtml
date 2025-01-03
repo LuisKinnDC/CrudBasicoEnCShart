@@ -1,0 +1,38 @@
+﻿@model GestorUsuariosCRUD.Models.Role
+
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<h1>Editar</h1>
+
+<h4>Rol</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdRol" />
+            <div class="form-group">
+                <label asp-for="NombreRol" class="control-label">Nombre del Rol</label>
+                <input asp-for="NombreRol" class="form-control" />
+                <span asp-validation-for="NombreRol" class="text-danger"></span>
+            </div>
+            <hr />
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">
+                    <i class="ri-save-line"></i> Guardar
+                </button> |
+                <a asp-action="Index" class="btn btn-secondary">
+                    <i class="ri-arrow-left-line"></i> Volver
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

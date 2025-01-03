@@ -1,0 +1,47 @@
+﻿@model IEnumerable<GestorUsuariosCRUD.Models.Role>
+
+@{
+    ViewData["Title"] = "Lista de Roles";
+}
+
+<h1 class="text-primary">
+    <i class="ri-lock-line"></i> Lista de Roles
+</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success ">
+        <i class="ri-user-add-line"></i> Crear Nuevo
+    </a>
+</p>
+
+<table class="table table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+            <th>
+                Rol
+            </th>
+            <th class="text-center">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreRol)
+                </td>
+                <td class="text-center">
+                    <a asp-action="Edit" asp-route-id="@item.IdRol" class="btn btn-warning btn-sm">
+                        <i class="ri-pencil-line"></i> Editar
+                    </a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdRol" class="btn btn-danger btn-sm">
+                        <i class="ri-delete-bin-5-line"></i> Eliminar
+                    </a> |
+                    <a asp-action="Details" asp-route-id="@item.IdRol" class="btn btn-info btn-sm">
+                        <i class="ri-eye-line"></i> Detalles
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

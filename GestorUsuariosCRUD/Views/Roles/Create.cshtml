@@ -1,0 +1,39 @@
+﻿@model GestorUsuariosCRUD.Models.Role
+
+@{
+    ViewData["Title"] = "Crear Nuevo Rol";
+}
+
+<h1>Crear Nuevo Rol</h1>
+
+<h4>Detalles del Rol</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="NombreRol" class="control-label">Nombre del Rol</label>
+                <input asp-for="NombreRol" class="form-control" placeholder="Ejemplo: Administrador" />
+                <span asp-validation-for="NombreRol" class="text-danger"></span>
+            </div>
+            <hr />
+            <div class="form-group">
+            
+                <button type="submit" class="btn btn-success">
+                    <i class="ri-save-line"></i> Crear Rol
+                </button> |
+                <a asp-action="Index" class="btn btn-secondary">
+                    <i class="ri-arrow-left-line"></i> Volver
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

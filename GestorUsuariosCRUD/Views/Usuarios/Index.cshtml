@@ -1,0 +1,64 @@
+﻿@model IEnumerable<GestorUsuariosCRUD.Models.Usuario>
+
+@{
+    ViewData["Title"] = "Lista de Usuarios";
+}
+
+<h1 class="text-primary">
+    <i class="ri-group-line"></i> Lista de Usuarios
+</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">
+        <i class="ri-user-add-line"></i> Crear Nuevo
+    </a>
+</p>
+
+<table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Telefono</th>
+            <th>Contraseña</th>
+            <th>Estado</th>
+            <th>Fecha de Registro</th>
+            <th>Rol</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                <td>@Html.DisplayFor(modelItem => item.Correo)</td>
+                <td>@Html.DisplayFor(modelItem => item.Telefono)</td>
+                <td>@Html.DisplayFor(modelItem => item.Contrasena)</td>
+                <td>@Html.DisplayFor(modelItem => item.Estado)</td>
+                <td>@Html.DisplayFor(modelItem => item.FechaRegistro)</td>
+                <td>
+                    @if (item.IdRols != null && item.IdRols.Any())
+                    {
+                        @string.Join(", ", item.IdRols.Select(r => r.NombreRol))
+                    }
+                    else
+                    {
+                        <span>No tiene roles asignados</span>
+                    }
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdUsuario" class="btn btn-warning btn-sm">
+                        <i class="ri-pencil-line"></i> Editar
+                    </a>
+                    <a asp-action="Delete" asp-route-id="@item.IdUsuario" class="btn btn-danger btn-sm">
+                        <i class="ri-delete-bin-6-line"></i> Eliminar
+                    </a>
+                    <a asp-action="Details" asp-route-id="@item.IdUsuario" class="btn btn-info btn-sm">
+                        <i class="ri-eye-line"></i> Detalles
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
